@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{curso.titulo}}</h5>
                     <p class="card-text">{{curso.descripcion}}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-primary" @click.prevent="eliminarCurso(index)">Eliminar</a>
                 </div>
             </div>
           </section>
@@ -23,7 +23,12 @@ export default {
             type: Array,
             required: true
         }
-    }
+    },
+    methods: {
+        eliminarCurso(index){
+            this.$emit('eliminarCurso', index);
+        }
+    },
 }
 </script>
 

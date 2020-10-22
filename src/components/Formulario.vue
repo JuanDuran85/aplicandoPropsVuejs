@@ -41,6 +41,9 @@ export default {
           id: this.id++
         };
         this.$emit('enviandoDatos',dataCurso);
+        this.imagen = "";
+        this.titulo = "";
+        this.descripcion = "";
       } else {
         console.log("No hay datos...");
       }

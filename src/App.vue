@@ -2,7 +2,7 @@
   <div>
     <Navbar/>
     <Formulario @enviandoDatos="procesarCurso"/>
-    <Tarjetas :dataCurso="datosCursos"/>
+    <Tarjetas :dataCurso="datosCursos" @eliminarCurso="borrarCurso"/>
     <Footer/>
   </div>
 </template>
@@ -30,6 +30,9 @@ export default {
     procesarCurso(datos){
       console.log(datos);
       this.datosCursos.push(datos);
+    },
+    borrarCurso(index){
+      this.datosCursos.splice(index,1);
     }
   },
 }
