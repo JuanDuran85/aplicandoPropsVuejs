@@ -1,6 +1,7 @@
 <template>
   <section class="my-5 container">
     <h1 class="text-center">Ingresa el curso</h1>
+    <h4>{{conversionTexto}}</h4>
     <form @submit.prevent="enviarData">
       <div class="form-group">
         <label for="titulo">Titulo del Curso</label>
@@ -17,6 +18,9 @@
       <button type="reset" class="btn btn-danger btn-lg">Reset</button>
       <button type="submit" class="btn btn-success mx-2 btn-lg">Enviar</button>
     </form>
+    <div v-if="largoTitulo > 0">
+      <p>El largo del titulo del curso es: {{largoTitulo}} </p>
+    </div>
   </section>
 </template>
 
@@ -25,10 +29,19 @@ export default {
   name: 'Formulario',
   data() {
     return {
+      mensaje: 'Mensaje desde Data',
       titulo: '',
       imagen: '',
       descripcion: '',
       id: 1
+    }
+  },
+  computed: {
+    conversionTexto(){
+      return this.mensaje.toLowerCase();
+    },
+    largoTitulo(){
+      return this.titulo.length;
     }
   },
   methods: {
@@ -40,6 +53,7 @@ export default {
           imagen: this.imagen,
           id: this.id++
         };
+        
         this.$emit('enviandoDatos',dataCurso);
         this.imagen = "";
         this.titulo = "";
@@ -47,7 +61,29 @@ export default {
       } else {
         console.log("No hay datos...");
       }
+    },
+    mostrarVentana(){
+      alert("Se esta viendo todo en el HTML...");
     }
+  },
+  beforeCreate() {
+    console.log("Antes de crear desde formulario");
+  },
+  created() {
+    console.log("creado desde formulario");
+    this.mostrarVentana();
+  },
+  beforeMount() {
+    console.log("Antes de montar desde formulario");
+  },
+  mounted() {
+    console.log("montado todo desde formulario...");
+  },
+  beforeUpdate() {
+    console.log("antes de actualizar desde formulario...");
+  },
+  updated() {
+    console.log("Actualizado desde formulario");
   },
 }
 </script>

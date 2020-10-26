@@ -30,7 +30,25 @@
 
 <script>
 export default {
-    name: 'Navbar'
+    name: 'Navbar',
+    beforeCreate() {
+        console.log("Antes de crear desde el navBar");
+    },
+    created() {
+        console.log("creado desde el navBar");
+    },
+    beforeMount() {
+        console.log("Antes de montar desde el navBar");
+    },
+    mounted() {
+        console.log("montado todo desde el navBar...");
+    },
+    beforeUpdate() {
+        console.log("antes de actualizar desde el navBar...");
+    },
+    updated() {
+        console.log("Actualizado desde el navBar");
+    },
 }
 </script>
 
